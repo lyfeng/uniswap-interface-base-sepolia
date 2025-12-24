@@ -20,6 +20,7 @@ import { useTranslation } from 'react-i18next'
 import { useMultichainContext } from 'state/multichain/useMultichainContext'
 import { ClassicTrade, TradeFillType } from 'state/routing/types'
 import { useUserSlippageTolerance } from 'state/user/hooks'
+import { SWAP_ROUTER_ADDRESSES } from 'uniswap/src/constants/swap/routing'
 import { SwapEventName } from 'uniswap/src/features/telemetry/constants'
 import { sendAnalyticsEvent } from 'uniswap/src/features/telemetry/send'
 import i18n from 'uniswap/src/i18n'
@@ -112,7 +113,7 @@ export function useUniversalRouterSwapCallback({
       })
       const tx = {
         from: account.address,
-        to: UNIVERSAL_ROUTER_ADDRESS(UniversalRouterVersion.V1_2, chainId),
+        to: SWAP_ROUTER_ADDRESSES[chainId] ?? UNIVERSAL_ROUTER_ADDRESS(UniversalRouterVersion.V1_2, chainId),
         data,
         // TODO(https://github.com/Uniswap/universal-router-sdk/issues/113): universal-router-sdk returns a non-hexlified value.
         ...(value && !isZero(value) ? { value: toHex(value) } : {}),

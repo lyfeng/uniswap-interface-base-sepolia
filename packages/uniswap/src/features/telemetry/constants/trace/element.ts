@@ -36,6 +36,7 @@ export enum ElementName {
   ChainArbitrum = 'chain-arbitrum',
   ChainAvalanche = 'chain-avalanche',
   ChainBase = 'chain-base',
+  ChainBaseSepolia = 'chain-base-sepolia',
   ChainBNB = 'chain-bnb',
   ChainBlast = 'chain-blast',
   ChainCelo = 'chain-celo',
